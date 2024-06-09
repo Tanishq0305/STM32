@@ -2,6 +2,7 @@
 #include "gp_drive.h"
 #include "stm32f10x.h"                  // Device header
 
+
 void USART_init(unsigned short usart, unsigned long BR)
 {
 	//If you are using USART1 clocl speed 108MHZ, else 54MHz
@@ -78,4 +79,52 @@ unsigned long USART_BRR(unsigned short usart, unsigned long BR)
 	final += dec;
 	
 	return final;
+}
+
+char USART_RX(unsigned short usart)
+{
+	char c;
+	if(usart == 1)
+	  {
+		while((USART1->SR & 0x20) == 0) // If RXNE bit is LOW then we are not recevings
+		{}
+		c = USART1->DR; //If RXNE bit is HIGH then we can see received data in the chat variable
+	  }
+	else if(usart == 2)
+	  {
+		while((USART2->SR & 0x20) == 0) // If RXNE bit is LOW then we are not recevings
+		{}
+		c = USART2->DR; //If RXNE bit is HIGH then we can see received data in the chat variable
+	  }
+	else if(usart == 3)
+		{
+		while((USART3->SR & 0x20) == 0) // If RXNE bit is LOW then we are not recevings
+		{}
+		c = USART3->DR; //If RXNE bit is HIGH then we can see received data in the chat variable
+		}
+	return c;
+}
+
+void USART_TX(unsigned short usart, char c)
+{
+
+	if(usart == 1)
+	  {
+		while((USART1->SR & (1<<6)) == 0x80) // If TXE bit is 1 then we do not send any data
+		{}
+		USART1->DR = c;	// if the TXE is 0 then send the chat character
+	  }
+	else if(usart == 2)
+	  {
+		while((USART2->SR & (1<<6)) == 0x80) // If TXE bit is 1 then we do not send any data
+		{}
+		USART2->DR = c;	// if the TXE is 0 then send the chat character
+	  }
+	else if(usart == 3)
+		{
+		while((USART3->SR & (1<<6)) == 0x80) // If TXE bit is 1 then we do not send any data
+		{}
+		USART3->DR = c;	// if the TXE is 0 then send the chat character
+		}
+
 }
