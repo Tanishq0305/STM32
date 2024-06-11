@@ -2,7 +2,7 @@
 #include "gp_drive.h"
 #include "stm32f10x.h"                  // Device header
 #include "SysTick.h"
-
+#include "SysTick.h"
 
 void USART_init(unsigned short usart, unsigned long BR)
 {
@@ -150,19 +150,28 @@ void USART_TX(unsigned short usart, char c)
 
 }
 
-void USART_ISR(unsigned short uart, unsigned short bridge, unsigned short * signal, unsigned short * counter, char str[])
+void USART_ISR(unsigned short uart, unsigned short uart_mgr[], char str[])
 {
-	if(bridge == 0) // If bridge is not HIGH means it is process
+	if(uart_mgr[2] == 0) // If bridge is not HIGH means it is process
 	{
-		str[*counter] = USART_RX(uart); //First receive the message
-		if(str[*counter] == '\n') //If the counter pointer reaches to new line charcter 
-		{
-			* counter = 0; //reset counter to 0
-			* signal = 1; //Set the signal to HIGH
-		}else
-		{
-			* counter = *counter + 1; //else increment the counter
-		}
+				str[uart_mgr[0]] = USART_RX(uart); //First receive the message
+				if(uart_mgr[3]) //If the Terminator == 1 then do the terminator process
+				{
+								if(str[uart_mgr[0]] == uart_mgr[4]) //If the string reaches to terminator char otherwise timer strategy
+								{
+									uart_mgr[0] = 0; //reset counter to 0
+									uart_mgr[1] = 1; //Set the signal to HIGH
+								}else
+								{
+									uart_mgr[0]++; //else increment the counter
+								}
+				}else
+				{
+					//Timer Strategy
+					uart_mgr[0]++; //counter should be incremented irrespective of the strategy
+					uart_mgr[6] = uart_mgr[5]; //initialize the time counter to the constant that we have use
+					SysTick_int_start(); //start the interrupt
+				}
 	}else
 	{
 		USART_TX(uart, USART_RX(uart)); // if bridge == 1 that means user need to perform only bridgr operation
@@ -185,7 +194,18 @@ void str_empty(char str[])
 	int i = 0;
 	while(str[i] != '\0') //while the str[i] is not new-line character
 	{
-		str[i] = '\0';
+		str[i] = '\0'; //make that char = 0
 		i++;
 	}
+}
+
+void UART_msg(unsigned short uart, char str[], unsigned short str_mgr[])
+{
+	unsigned long timeOut = 720000;
+	UART_SEND(uart,str);
+	while(str_mgr[1] == 0 & timeOut != 0)//while the signal is 0 we do nothing
+	{
+		timeOut--;
+	}
+	str_mgr[1]= 0;
 }
