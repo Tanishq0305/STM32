@@ -13,3 +13,5 @@ Project4 -> Creation of Systick library and using USART communication, Creation 
 Project5 -> USART Interrupt and its library
 
 Project6 -> USART Advanced Communication Setup
+
+Prject7  -> Simple SPI Communication
