@@ -11,3 +11,5 @@ Project3 -> Using Timer Interrupt
 Project4 -> Creation of Systick library and using USART communication, Creation of USART Library
 
 Project5 -> USART Interrupt and its library
+
+Project6 -> USART Advanced Communication Setup
