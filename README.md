@@ -14,4 +14,4 @@ Project5 -> USART Interrupt and its library
 
 Project6 -> USART Advanced Communication Setup
 
-Prject7  -> Simple SPI Communication
+Prject7  -> Simple SPI Communication & its library creation
