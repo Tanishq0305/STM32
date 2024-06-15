@@ -17,3 +17,5 @@ Project6 -> USART Advanced Communication Setup
 Prject7  -> Simple SPI Communication & its library creation
 
 Project8 -> I2C Comminication and its library Creation
+
+Project9 -> ADC Setup and Driver Creation
