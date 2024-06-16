@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>6220000::V6.22::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -110,8 +111,8 @@
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
           <SimDllArguments> -REMAP</SimDllArguments>
-          <SimDlgDll>DCM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM3</SimDlgDllArguments>
+          <SimDlgDll>DARMSTM.DLL</SimDlgDll>
+          <SimDlgDllArguments>-pSTM32F103C8</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments></TargetDllArguments>
           <TargetDlgDll>TCM.DLL</TargetDlgDll>
@@ -259,17 +260,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -279,7 +280,7 @@
                 <Size>0x10000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -394,16 +395,6 @@
               <FilePath>.\gp_drive.h</FilePath>
             </File>
             <File>
-              <FileName>i2c_drive.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\i2c_drive.c</FilePath>
-            </File>
-            <File>
-              <FileName>i2c_drive.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\i2c_drive.h</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
@@ -427,6 +418,26 @@
               <FileName>adc_drive.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\adc_drive.h</FilePath>
+            </File>
+            <File>
+              <FileName>help_func.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\help_func.c</FilePath>
+            </File>
+            <File>
+              <FileName>help_func.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\help_func.h</FilePath>
+            </File>
+            <File>
+              <FileName>uart_drive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\uart_drive.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_drive.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\uart_drive.h</FilePath>
             </File>
           </Files>
         </Group>

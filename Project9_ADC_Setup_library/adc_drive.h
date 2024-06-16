@@ -1,5 +1,6 @@
 #include "stm32f10x.h"                  // Device header
-#include "gp_drive.h" 
+#include "gp_drive.h"
+#include "SysTick.h"
 
 #define adc1 1
 #define adc2 2
@@ -24,4 +25,6 @@ PC4 -> ADC12_IN14
 PC5 -> ADC12_IN15
 
 */
-
+char adc_init(char adc, short port, short pin);
+char adc_check(char adc, short port, short pin);
+int adc_rx(char adc, short port, short pin);
