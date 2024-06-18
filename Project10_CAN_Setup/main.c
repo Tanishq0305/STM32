@@ -46,4 +46,15 @@ uint8_t test_data[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
         }
     }
 		
+		
+		/*
+		RCC->APB2ENR |= 0x4; //Enabled Port GPIO-A
+		GPIOA->CRL |= 0b1000; //Setting Port A's pin 0 as input - PA0 -> Input
+		//IDR register is used to check the input pin status 
+		//You can run loop to check the status of PA0 if(GPIOA->IDR & 0x1) which says if IDR0 is 1 then write any statement which you want to do
+		GPIOA->CRL |= 0x30; //set the Pin-1 of GPIOA as output check reference manual
+		//Now just like IDR for input ODR is there which is Output data register
+		GPIOA->ODR |= 0x2; //Set the PinA to HIGH
+		
+		*/
 }
