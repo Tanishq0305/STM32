@@ -38,7 +38,7 @@ void USART_init(unsigned short usart, unsigned long BR)
 	{
 	RCC->APB1ENR |= 0x40000; //Enabling USART3 from the bus
 	init_GP(PB, 10, OUT50, O_GP_PP); //Enabling Output or Tx
-	init_GP(PB, 1, IN, IPP); //Enabling Input or Rx
+	init_GP(PB, 11, IN, IPP); //Enabling Input or Rx
 	USART3->BRR |= BRR_Calculation; //Setting the baud rate for 9600
 	USART3->CR1 |= 8;	//Setting UART Transmit
 	USART3->CR1 |= 4;	//Setting UART Receive
@@ -48,17 +48,17 @@ void USART_init(unsigned short usart, unsigned long BR)
 
 unsigned long USART_BRR(unsigned short usart, unsigned long BR)
 {
-	unsigned long div = 54000000; //Store the integer number division by the clock 
+	unsigned long div = 36000000; //Store the integer number division by the clock 
 	//our clock is 108MHz so we used 54MHz if clock=72MHz -> it will be 36MHz
 	unsigned long dec;
-	double frac = 54000000.00; //for storing the fractional part
+	double frac = 36000000.00; //for storing the fractional part
 	double frac2;
 	unsigned long final;
 	
 	if(usart == 1)
 	{
-	div = 108000000; //Store the integer number division by the clock 
-	frac = 108000000.00; //for storing the fractional part
+	div = 72000000; //Store the integer number division by the clock 
+	frac = 72000000.00; //for storing the fractional part
 	}
 	div = div/(BR*16); //From the baud rate calculation formula //Division Result Calculation
 	frac = 16 * (frac/(BR*16)-div);//From the baud rate calculation formula //Fractional Calculation

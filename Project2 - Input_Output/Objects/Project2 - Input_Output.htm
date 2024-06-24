@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Project2 - Input_Output.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Project2 - Input_Output.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Tue Jun  4 10:43:01 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6220000: Last Updated: Sun Jun 23 08:51:33 2024
 <BR><P>
 <H3>Maximum Stack Usage =         56 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -45,7 +45,7 @@ Function Pointers
  <LI><a href="#[1a]">DMA1_Channel6_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[1b]">DMA1_Channel7_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[7]">DebugMon_Handler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
- <LI><a href="#[10]">EXTI0_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
+ <LI><a href="#[10]">EXTI0_IRQHandler</a> from main.o(.text.EXTI0_IRQHandler) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[32]">EXTI15_10_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[11]">EXTI1_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
  <LI><a href="#[12]">EXTI2_IRQHandler</a> from startup_stm32f10x_md.o(.text) referenced from startup_stm32f10x_md.o(RESET)
@@ -325,9 +325,6 @@ Global Symbols
 <P><STRONG><a name="[1b]"></a>DMA1_Channel7_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[10]"></a>EXTI0_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
-<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
-</UL>
 <P><STRONG><a name="[32]"></a>EXTI15_10_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f10x_md.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
@@ -471,11 +468,13 @@ Global Symbols
 
 <P><STRONG><a name="[7b]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, indicate_semi.o(.text), UNUSED)
 
-<P><STRONG><a name="[4b]"></a>R_GP</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, gp_drive.o(.text.R_GP))
+<P><STRONG><a name="[10]"></a>EXTI0_IRQHandler</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, main.o(.text.EXTI0_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
+</UL>
+<P><STRONG><a name="[4d]"></a>R_GP</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, gp_drive.o(.text.R_GP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = R_GP
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toggle_GP
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toggle_GP
 </UL>
 
 <P><STRONG><a name="[35]"></a>SystemInit</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, system_stm32f10x.o(.text.SystemInit))
@@ -488,14 +487,7 @@ Global Symbols
 <P><STRONG><a name="[4e]"></a>W_GP</STRONG> (Thumb, 160 bytes, Stack size 16 bytes, gp_drive.o(.text.W_GP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = W_GP
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toggle_GP
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[4c]"></a>delay</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(.text.delay))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delay
-</UL>
-<BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toggle_GP
 </UL>
 
 <P><STRONG><a name="[4a]"></a>init_GP</STRONG> (Thumb, 258 bytes, Stack size 16 bytes, gp_drive.o(.text.init_GP))
@@ -504,23 +496,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[40]"></a>main</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, main.o(.text.main))
+<P><STRONG><a name="[40]"></a>main</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = main &rArr; toggle_GP &rArr; W_GP
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W_GP
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toggle_GP
-<LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;R_GP
+<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toggle_GP
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_GP
+<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[4d]"></a>toggle_GP</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, gp_drive.o(.text.toggle_GP))
+<P><STRONG><a name="[4c]"></a>toggle_GP</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, gp_drive.o(.text.toggle_GP))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = toggle_GP &rArr; W_GP
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W_GP
-<LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;R_GP
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;R_GP
 </UL>
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -528,6 +518,12 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
+<P><STRONG><a name="[4b]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, main.o(.text.__NVIC_EnableIRQ))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = __NVIC_EnableIRQ
+</UL>
+<BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
 <P><STRONG><a name="[48]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(.text.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SetSysClock &rArr; SetSysClockTo72
 </UL>

@@ -28,12 +28,12 @@ uint8_t received_length;
 uint8_t test_data[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 
 	SystemInitClock();
-	CAN_init(1);
+	//CAN_init(1);
 	
-	CAN_init(1); // Initialize CAN1
+	CAN_init(2); // Initialize CAN1
 
     // Test sending a message
-    CAN_SendMessage(CAN1, 0x123, test_data, 8);
+    CAN_SendMessage(CAN2, 0x123, test_data, 8);
 
     while (1)
     {

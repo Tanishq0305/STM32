@@ -18,8 +18,8 @@ int main(void)
 	GPIOC->CRH &= 0x00300000; //Set pin13 to output push-pull mode
 	*/
 	init_GP(PA, 0 ,IN, IPP);
-	init_GP(PC, 13, OUT50, O_GP_PP);
-	init_GP(PA, 12, OUT50, O_GP_PP);
+	init_GP(PC, 12, OUT50, O_GP_PP);
+	init_GP(PA, 0, OUT50, O_GP_PP);
 	
 	__disable_irq();
 	AFIO->EXTICR[0] = 0x00;
@@ -31,6 +31,7 @@ int main(void)
 	while(1)
 	{
 	//	if( R_GP(PA, 0) == 1) //checking PortA Pin0 is High or not
+		/*
 		W_GP(PA,12,signal);
 		if(signal)
 		{
@@ -45,6 +46,9 @@ int main(void)
 			{
 			W_GP(PC, 13, 0);
 			}
+			*/
+		toggle_GP(PA, 0);
+		
 	}
 	
 	

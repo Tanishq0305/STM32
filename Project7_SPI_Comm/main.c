@@ -21,7 +21,5 @@ int main()
 		
 		spi_msg(1, "Weew");
 		
-		
-		
 	}
 }

@@ -1,0 +1,82 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.40.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Tanishq Todkari, VIIT, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.40.0.3
+Toolchain Path:  C:\Users\Tanishq\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.22
+Assembler:       Armasm.exe V6.22
+Linker/Locator:  ArmLink.exe V6.22
+Library Manager: ArmAr.exe V6.22
+Hex Converter:   FromElf.exe V6.22
+CPU DLL:         SARMCM3.DLL V5.40.0.3
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      UL2CM3.DLL V1.164.11.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\ALL VIIT\STM32\Projects\Project11\Project11.uvprojx
+Project File Date:  06/20/2024
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.22', folder: 'C:\Users\Tanishq\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
+Rebuild target 'Target 1'
+assembling startup_stm32f10x_md.s...
+compiling system_stm32f10x.c...
+linking...
+.\Objects\Project11.axf: Error: L6218E: Undefined symbol main (referred from __rtentry2.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+".\Objects\Project11.axf" - 1 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM::CMSIS@6.1.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: GPIO Version: 1.0.0
+   * Component: Custom Version: 1.0.0
+   * Component: CORE Version: 6.1.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F1xx_DFP.2.4.1.pack
+                Keil::STM32F1xx_DFP@2.4.1
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/Device/STM32F103C8
+  ./RTE/_Target_1
+  C:/Users/Tanishq/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+  C:/Users/Tanishq/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Driver/Include
+  C:/Users/Tanishq/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ::CMSIS Driver:GPIO(API)@1.0.0
+      Include file:  CMSIS/Driver/Include/Driver_GPIO.h
+
+   * Component: ARM::CMSIS Driver:GPIO:Custom@1.0.0
+      Source file:   CMSIS/Driver/DriverTemplates/Driver_GPIO.c
+      Include file:  CMSIS/Driver/Include/Driver_GPIO.h
+
+   * Component: ARM::CMSIS:CORE@6.1.0
+
+   * Component: Keil::Device:Startup@1.0.0
+      Source file:   Device/Source/ARM/startup_stm32f10x_md.s
+      Source file:   Device/Source/system_stm32f10x.c
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
+Target not created.
+Build Time Elapsed:  00:00:00
+</pre>
+</body>
+</html>
